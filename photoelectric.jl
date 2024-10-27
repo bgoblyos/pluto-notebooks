@@ -68,7 +68,7 @@ begin
 	a_red = (190 ± 5)u"mm"
 	local θ = atan(a_red / b)
 	const λ_red = d * sin(θ)
-	md"Red laser wavelength: $λ_red"
+	md"Red LED wavelength: $λ_red"
 end
 
 # ╔═╡ 0226c04b-6946-46d1-a0bf-46f2a36aa4ce
@@ -76,7 +76,7 @@ begin
 	a_yellow = (179 ± 5)u"mm"
 	local θ = atan(a_yellow / b)
 	const λ_yellow = d * sin(θ)
-	md"Yellow/orange laser wavelength: $λ_yellow"
+	md"Yellow/orange LED wavelength: $λ_yellow"
 end
 
 # ╔═╡ 076a9fe8-0306-4200-bebf-bea491662617
@@ -84,7 +84,7 @@ begin
 	a_green = (159 ± 9)u"mm"
 	local θ = atan(a_green / b)
 	const λ_green = d * sin(θ)
-	md"Green laser wavelength: $λ_green"
+	md"Green LED wavelength: $λ_green"
 end
 
 # ╔═╡ d2902ec9-461d-4b78-88b4-32a4d470a74c
@@ -92,7 +92,7 @@ begin
 	a_blue = (142.5 ± 8)u"mm"
 	local θ = atan(a_blue / b)
 	const λ_blue = d * sin(θ)
-	md"Blue laser wavelength: $λ_blue"
+	md"Blue LED wavelength: $λ_blue"
 end
 
 # ╔═╡ a299b926-5918-4e98-972a-8cac185a4801
@@ -100,7 +100,7 @@ begin
 	a_uv = (118 ± 3)u"mm"
 	local θ = atan(a_uv / b)
 	const λ_uv = d * sin(θ)
-	md"UV laser wavelength: $λ_uv"
+	md"UV LED wavelength: $λ_uv"
 end
 
 # ╔═╡ 1edfbb38-f4af-4a22-9860-1bc5d77c6879

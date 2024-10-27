@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.19.47
+# v0.19.46
 
 using Markdown
 using InteractiveUtils
@@ -68,6 +68,7 @@ begin
 	a_red = (190 ± 5)u"mm"
 	local θ = atan(a_red / b)
 	const λ_red = d * sin(θ)
+	md"Red laser wavelength: $λ_red"
 end
 
 # ╔═╡ 0226c04b-6946-46d1-a0bf-46f2a36aa4ce
@@ -75,6 +76,7 @@ begin
 	a_yellow = (179 ± 5)u"mm"
 	local θ = atan(a_yellow / b)
 	const λ_yellow = d * sin(θ)
+	md"Yellow/orange laser wavelength: $λ_yellow"
 end
 
 # ╔═╡ 076a9fe8-0306-4200-bebf-bea491662617
@@ -82,6 +84,7 @@ begin
 	a_green = (159 ± 9)u"mm"
 	local θ = atan(a_green / b)
 	const λ_green = d * sin(θ)
+	md"Green laser wavelength: $λ_green"
 end
 
 # ╔═╡ d2902ec9-461d-4b78-88b4-32a4d470a74c
@@ -89,6 +92,7 @@ begin
 	a_blue = (142.5 ± 8)u"mm"
 	local θ = atan(a_blue / b)
 	const λ_blue = d * sin(θ)
+	md"Blue laser wavelength: $λ_blue"
 end
 
 # ╔═╡ a299b926-5918-4e98-972a-8cac185a4801
@@ -96,6 +100,7 @@ begin
 	a_uv = (118 ± 3)u"mm"
 	local θ = atan(a_uv / b)
 	const λ_uv = d * sin(θ)
+	md"UV laser wavelength: $λ_uv"
 end
 
 # ╔═╡ 1edfbb38-f4af-4a22-9860-1bc5d77c6879
@@ -108,7 +113,7 @@ Photocell characteristics
 """
 
 # ╔═╡ 70a05b4a-d3cc-4cb0-a556-3f8c8970e9e7
-const Rmeas = (993 ± 3)u"MΩ"
+const Rmeas = (993 ± 3)u"kΩ"
 
 # ╔═╡ 94b4103f-2566-4347-b229-79ddcd40d898
 function readIV(fname)
@@ -421,7 +426,7 @@ begin
 
 	
 	hLED = uconvert(u"J*s", fit[2]*e)
-	WLED = uconvert(u"eV", fit[1]*e)
+	#WLED = uconvert(u"eV", fit[1]*e)
 
 	local plt = scatter(fs, Vfs, xlabel = "Frequency", ylabel = "V$(L"_t")", label = "Measured data points")
 	plot!(plt, [450, 800]u"THz", ([450, 800]u"THz")*fit[2] .+ fit[1], label = "Best fit line")
@@ -496,7 +501,6 @@ begin
 
 	savefig(plt, "~/Downloads/LED_efficiency.pdf")
 	plt
-	U0
 end
 
 # ╔═╡ ce5bd523-45bf-4f83-9e9f-15c185c6b429
@@ -522,7 +526,7 @@ function readLEDMatrix(receiver)
 end
 
 # ╔═╡ a29ec099-7558-4f41-8841-8127f9b2f05a
-readLEDMatrix("UV")
+readLEDMatrix("Green")
 
 # ╔═╡ 20960785-1e65-4778-8f57-cf60b29cc6cb
 for i in ["Red", "Orange", "Green", "Blue", "UV"]
@@ -553,7 +557,7 @@ Unitful = "~1.21.0"
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.11.1"
+julia_version = "1.11.0"
 manifest_format = "2.0"
 project_hash = "bd6c6fafa537a5de4542f946c52996350a929548"
 
@@ -1763,7 +1767,7 @@ version = "1.4.1+1"
 # ╟─42291dc8-c683-4339-bbbc-75ccd8464b6d
 # ╟─90b811d2-6954-4057-80fe-48ea2a0fc739
 # ╠═64a8a7a7-bfe4-4fc0-ab38-9e995d7bf668
-# ╠═4bb50507-4999-42e0-94c5-eb549244cb1f
+# ╟─4bb50507-4999-42e0-94c5-eb549244cb1f
 # ╠═04680f87-5c7b-40f9-ad6a-aaccb4b26016
 # ╠═0226c04b-6946-46d1-a0bf-46f2a36aa4ce
 # ╠═076a9fe8-0306-4200-bebf-bea491662617
@@ -1771,7 +1775,7 @@ version = "1.4.1+1"
 # ╠═a299b926-5918-4e98-972a-8cac185a4801
 # ╟─1edfbb38-f4af-4a22-9860-1bc5d77c6879
 # ╟─56174e9d-eb8e-4e8c-8020-b50efdcfe38e
-# ╠═70a05b4a-d3cc-4cb0-a556-3f8c8970e9e7
+# ╟─70a05b4a-d3cc-4cb0-a556-3f8c8970e9e7
 # ╠═94b4103f-2566-4347-b229-79ddcd40d898
 # ╠═8fcf4748-47a4-4fae-b52e-e6906f83909e
 # ╠═d21236b5-619b-4fb4-8a94-b3e5d330b040
@@ -1799,7 +1803,7 @@ version = "1.4.1+1"
 # ╠═94f3c8f2-718a-4c98-b75d-f62331a4a78e
 # ╟─9b433bf1-eba7-4729-95ce-370fa97fce2a
 # ╠═64e33ce3-f32a-45f0-9953-5b61e9632fab
-# ╠═0be3347e-31ac-448b-a9bb-e8996cec1ace
+# ╟─0be3347e-31ac-448b-a9bb-e8996cec1ace
 # ╟─0d05db32-ec16-44af-896a-7fcb9d50da5c
 # ╠═86e55d95-2f80-4f38-91aa-f2120bf60de9
 # ╠═d280280c-2915-4626-84c4-afc2c2e839b0
